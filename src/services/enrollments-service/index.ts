@@ -6,9 +6,7 @@ import enrollmentRepository, { CreateEnrollmentParams } from '@/repositories/enr
 import { exclude } from '@/utils/prisma-utils';
 import { ViaCEPAddress } from '../../protocols';
 
-
-async function getAddressFromCEP(cep :string) {
-
+async function getAddressFromCEP(cep: string) {
   const result = await request.get(`${process.env.VIA_CEP_API}/${cep}/json/`);
 
   if (!result.data) {
@@ -20,9 +18,8 @@ async function getAddressFromCEP(cep :string) {
     complemento: result.data.complemento,
     bairro: result.data.bairro,
     cidade: result.data.localidade,
-    uf: result.data.uf
-  }
-  
+    uf: result.data.uf,
+  };
   return address;
 }
 
